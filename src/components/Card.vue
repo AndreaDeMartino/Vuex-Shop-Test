@@ -2,12 +2,12 @@
   <div class="card">
     <div class="card__top">
       <div class="card__logo">
-        <img :src="logo" alt="product" />
+        <img :src="card.img" alt="product" />
       </div>
 
       <div class="card__info">
-        <h3>{{ title }}</h3>
-        <div class="card__price">€{{ price }}</div>
+        <h3>{{ card.title }} <span v-if="isCart"> ({{ card.qt }})</span></h3>
+        <div class="card__price">€{{ card.price }}</div>
         <p class="card__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
@@ -15,34 +15,35 @@
     </div>
 
     <div class="card__bottom">
-      <div class="card__button">Add to Cart</div>
+      <div v-if="!isCart" class="card__button" @click="addToCart(card)">Add to Cart</div>
+      <div v-else class="card__button--cart" @click="removeFromCart(card)">Remove from Cart</div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: {
-    price: {
-      type: String,
+    card: {
+      type: Object,
       required: true,
     },
-    title: {
-      type: String,
-      required: true,
-    },
-    logo: {
-      type: String,
-      required: true,
-    },
+    isCart: {
+      type: Boolean,
+      default: false
+    }
   },
+  methods: {
+    ...mapMutations(["addToCart","removeFromCart"]),
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
   width: 40%;
-  min-height: 100px;
   margin: 1rem;
   padding: 1rem;
   box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.3);
@@ -50,6 +51,11 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0.9;
+  transition: transform 0.3s linear;
+  &:hover{
+    transform: scale(1.1);
+  }
   &__top {
     display: flex;
     justify-content: center;
@@ -58,6 +64,7 @@ export default {
       flex-basis: 30%;
       img {
         max-width: 100%;
+        object-fit: cover;
       }
     }
     .card__info {
@@ -87,6 +94,14 @@ export default {
       margin: 15px 10px;
       padding: 0.7rem;
       background: #27ae60;
+      color: #fff;
+      border-radius: 0.2rem;
+      cursor: pointer;
+    }
+    .card__button--cart{
+      margin: 15px 10px;
+      padding: 0.7rem;
+      background:#e74c3c;
       color: #fff;
       border-radius: 0.2rem;
       cursor: pointer;

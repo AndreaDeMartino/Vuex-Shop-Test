@@ -4,7 +4,9 @@
     <app-navbar></app-navbar>
 
     <!-- Content -->
-    <router-view></router-view>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -24,5 +26,14 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -10,6 +10,7 @@ import rootActions from './actions.js'
 
 // Modules
 import cardModule from './modules/card/index.js'
+import authModule from './modules/auth/index.js'
 
 export default new Vuex.Store({
   state: {
@@ -21,6 +22,7 @@ export default new Vuex.Store({
 
 
   modules: {
-    card: cardModule
+    card: cardModule,
+    auth: authModule,
   }
 })

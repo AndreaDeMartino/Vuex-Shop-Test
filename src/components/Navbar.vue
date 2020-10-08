@@ -1,26 +1,45 @@
 <template>
   <nav class="navbar">
     <div class="navbar__container">
-      <router-link class="navbar__logo" to="/" tag="div">VUE SHOP</router-link>
+      <router-link class="navbar__logo" to="/" tag="div">VUEX SHOP</router-link>
 
       <div class="navbar__navigation">
-        <router-link class="navigation__item" to="/">Products</router-link>
-        <router-link class="navigation__item" to="/cart">Cart</router-link>
-        <div class="cart__number">{{ getCart }}</div>
+        <router-link class="navigation__item" to="/">PRODUCTS</router-link>
+        <router-link v-if="getAuth" class="navigation__item" to="/cart"
+          >CART</router-link
+        >
+        <div v-if="getAuth" class="cart__number">{{ getCartLen }}</div>
       </div>
       <div class="navbar__auth">
-        <div class="auth__button">Login</div>
+        <div v-if="!getAuth" @click="changeAuth()" class="auth__button">
+          Login
+        </div>
+        <div
+          v-if="getAuth"
+          @click="changeAuth(), backHome()"
+          class="auth__button auth__out"
+        >
+          Logout
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["getCart"]),
+    ...mapGetters(["getCartLen", "getAuth"]),
+  },
+  methods: {
+    ...mapActions(["changeAuth"]),
+    backHome() {
+      if (this.$router.currentRoute.name !== "Home") {
+        this.$router.push("/");
+      }
+    },
   },
 };
 </script>
@@ -32,8 +51,10 @@ export default {
   margin-bottom: 50px;
   &__container {
     height: 100%;
-    width: 1150px;
+    max-width: 1150px;
     margin: 0 auto;
+    padding-right: 10px;
+    padding-left: 10px;
     display: flex;
     align-items: center;
   }
@@ -55,7 +76,6 @@ export default {
       padding: 0 5px;
       text-decoration: none;
       color: #fff;
-      letter-spacing: 0.1rem;
       &:hover {
         color: #2980b9;
       }
@@ -93,6 +113,9 @@ export default {
       cursor: pointer;
       &:hover {
         opacity: 1;
+      }
+      &.auth__out {
+        background-color: #e74c3c;
       }
     }
   }
