@@ -6,6 +6,7 @@
       <div class="navbar__navigation">
         <router-link class="navigation__item" to="/">Products</router-link>
         <router-link class="navigation__item" to="/cart">Cart</router-link>
+        <div class="cart__number">0</div>
       </div>
       <div class="navbar__auth">
         <div class="auth__button">Login</div>
@@ -45,13 +46,23 @@ export default {};
     justify-content: center;
     align-items: center;
     .navigation__item {
-      padding: 0 10px;
+      padding: 0 5px;
       text-decoration: none;
       color: #fff;
       letter-spacing: 0.1rem;
       &:hover {
         color: #2980b9;
       }
+    }
+    .cart__number {
+      width: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3px 0;
+      background-color: #2980b9;
+      border-radius: 50%;
+      color: #fff;
     }
     &:before {
       position: absolute;

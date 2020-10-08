@@ -10,7 +10,7 @@ export default {};
 
 <style lang="scss" scoped>
 .cart {
-  width: 1150px;
+  max-width: 1150px;
   margin: 0 auto;
 }
 </style>

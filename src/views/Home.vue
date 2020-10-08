@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  width: 1150px;
+  max-width: 1150px;
   margin: 0 auto;
   display: flex;
   justify-content: center;

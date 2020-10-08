@@ -43,12 +43,30 @@ export default {};
     .card__logo{
       flex-basis: 30%;
       img{
-        width: 100%;
+        max-width: 100%;
       }
     }
     .card__info{
       flex-basis: 70%;
       padding: 20px;
+      h3{
+        color: #2980b9;
+
+      }
+      .card__price{
+        margin: 5px 0;
+        padding: 2px;
+        border-radius: 0.3rem;
+        background-color: #f39c12;
+        color: #fff;
+        font-size: 0.9rem;
+        width: 5rem;
+        text-align: center;
+      }
+      .card__description{
+        color: #777;
+        font-size: 0.8rem;
+      }
     }
   }
   &__bottom{
@@ -57,8 +75,8 @@ export default {};
       padding: 0.7rem;
       background: #27ae60;
       color: #fff;
-      border-radius: 0.3rem;
-
+      border-radius: 0.2rem;
+      cursor: pointer;
     }
   }
 }
