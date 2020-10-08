@@ -2,7 +2,7 @@
   <div class="home">
 
     <div class="alert-auth" v-if="!getAuth">
-      <h2>Please do the Login to see products</h2>
+      <h2>Please Login to see products</h2>
     </div>
 
     <app-card

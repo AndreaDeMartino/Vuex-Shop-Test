@@ -1,4 +1,4 @@
-# vueshop
+# Vueshop
 
 #### Simulation of a shop with products, cart and auth state, managed by Vuex and Vue-Router
 
