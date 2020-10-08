@@ -3,13 +3,24 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
+// Import Root Vuex
+import rootGetters from './getters.js'
+import rootMutations from './mutations.js'
+import rootActions from './actions.js'
+
+// Modules
+import cardModule from './modules/card/index.js'
+
 export default new Vuex.Store({
   state: {
+    cart: []
   },
-  mutations: {
-  },
-  actions: {
-  },
+  getters: rootGetters,
+  mutations: rootMutations,
+  actions: rootActions,
+
+
   modules: {
+    card: cardModule
   }
 })

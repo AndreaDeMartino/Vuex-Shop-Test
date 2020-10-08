@@ -6,7 +6,7 @@
       <div class="navbar__navigation">
         <router-link class="navigation__item" to="/">Products</router-link>
         <router-link class="navigation__item" to="/cart">Cart</router-link>
-        <div class="cart__number">0</div>
+        <div class="cart__number">{{ getCart }}</div>
       </div>
       <div class="navbar__auth">
         <div class="auth__button">Login</div>
@@ -16,7 +16,13 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+
+export default {
+  computed: {
+    ...mapGetters(["getCart"]),
+  },
+};
 </script>
 
 <style lang="scss" scoped>

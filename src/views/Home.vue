@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    <app-card
+      v-for="card in getCard"
+      :key="card.title"
+      :title="card.title"
+      :price="card.price"
+      :logo="card.img"
+    ></app-card>
   </div>
 </template>
 
 <script>
-import Card from '@/components/Card.vue';
+import Card from "@/components/Card.vue";
+
+import { mapGetters } from "vuex";
 
 export default {
   components: {
     appCard: Card,
-  }
+  },
+  computed: {
+    ...mapGetters(["getCard"]),
+  },
 };
 </script>
 

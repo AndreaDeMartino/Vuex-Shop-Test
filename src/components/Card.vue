@@ -1,14 +1,13 @@
 <template>
   <div class="card">
-
     <div class="card__top">
       <div class="card__logo">
-        <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="product">
+        <img :src="logo" alt="product" />
       </div>
 
       <div class="card__info">
-        <h3>Card Title</h3>
-        <div class="card__price">€99.90</div>
+        <h3>{{ title }}</h3>
+        <div class="card__price">€{{ price }}</div>
         <p class="card__description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </p>
@@ -22,7 +21,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    price: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    logo: {
+      type: String,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -31,7 +45,7 @@ export default {};
   min-height: 100px;
   margin: 1rem;
   padding: 1rem;
-  box-shadow: 2px 0px 8px rgba(0 ,0, 0, 0.3);
+  box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,20 +54,19 @@ export default {};
     display: flex;
     justify-content: center;
     align-items: center;
-    .card__logo{
+    .card__logo {
       flex-basis: 30%;
-      img{
+      img {
         max-width: 100%;
       }
     }
-    .card__info{
+    .card__info {
       flex-basis: 70%;
       padding: 20px;
-      h3{
+      h3 {
         color: #2980b9;
-
       }
-      .card__price{
+      .card__price {
         margin: 5px 0;
         padding: 2px;
         border-radius: 0.3rem;
@@ -63,14 +76,14 @@ export default {};
         width: 5rem;
         text-align: center;
       }
-      .card__description{
+      .card__description {
         color: #777;
         font-size: 0.8rem;
       }
     }
   }
-  &__bottom{
-    .card__button{
+  &__bottom {
+    .card__button {
       margin: 15px 10px;
       padding: 0.7rem;
       background: #27ae60;
